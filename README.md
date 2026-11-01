@@ -206,6 +206,11 @@ flutter run -d windows
 
 ## 📦 How to Generate Release Android APK
 
+This repository includes a complete Android target. The workflow at
+`.github/workflows/build-apk.yml` builds a universal APK automatically on every
+push to `main`. You can download it from the completed workflow's **Artifacts**
+section on GitHub.
+
 When you are ready to produce an installable APK for Android devices:
 
 ### Option A: Build Split APKs (Smallest Download Size)
@@ -218,13 +223,17 @@ Generated APK outputs:
 - `build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk`
 - `build/app/outputs/flutter-apk/app-x86_64-release.apk`
 
-### Option B: Build Universal Fat APK (Installs on Any Android Device)
+### Option B: Build Universal APK (Installs on Any Android Device)
 Generates a single APK that contains native binaries for all architectures:
 ```bash
-flutter build apk --release
+flutter build apk --release --no-tree-shake-icons
 ```
 Generated APK output:
 - `build/app/outputs/flutter-apk/app-release.apk`
+
+The APK uses application ID `com.lokesh5505.expensetracker` and is signed with
+Flutter's default debug key for convenient direct installation. For Google Play
+publishing, configure a private release keystore and signing configuration.
 
 ### Installing APK on an Android Phone
 Once generated, you can install the APK directly to any connected Android phone via ADB:
