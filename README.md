@@ -226,7 +226,7 @@ Generated APK outputs:
 ### Option B: Build Universal APK (Installs on Any Android Device)
 Generates a single APK that contains native binaries for all architectures:
 ```bash
-flutter build apk --release
+flutter build apk --release --no-tree-shake-icons
 ```
 Generated APK output:
 - `build/app/outputs/flutter-apk/app-release.apk`
